@@ -1,0 +1,14 @@
+# Train/val/test sets as 
+## 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+
+
+# path: ../dataset/plastic-yolo  # dataset root dir
+train: C:/Users/parkm/OneDrive/바탕 화면/Bigleader/DeepLearning/code/dataset/plastic-yolo/train/
+val: C:/Users/parkm/OneDrive/바탕 화면/Bigleader/DeepLearning/code/dataset/plastic-yolo/val/
+# test:  # test images (optional)
+
+# Classes
+nc: 4  # number of classes
+names: ['pet', 'ps', 'pp', 'pe'] # class names
+
+# C:/Users/parkm/OneDrive/바탕 화면/Bigleader/DeepLearning/code/dataset/plastic-yolo

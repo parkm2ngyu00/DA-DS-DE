@@ -1,0 +1,221 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1420,1920" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/credentials" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="62">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>CredentialManagement</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Credentials.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.Activities.Contracts</x:String>
+      <x:String>System.Net</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Activities.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="이 워크플로의 목적은 ACME 웹사이트에 대한 자격 증명을 입력하고 다음 3가지 가능성을 확인하는 것입니다: &#xA;1. 성공적으로 로그인한 경우.&#xA;2. 잘못된 사용자 이름 또는 비밀번호를 사용하여 로그인한 경우 &#xA;* 잘못된 사용자 이름의 경우, Type Into 시에 Username 변수 앞에 문자열 &quot;a&quot;를 추가함(즉, &quot;a&quot; + Username) &#xA;* 잘못된 암호의 경우, Get Password 액티비티를 추가하고, 잘못된 암호를 입력한 다음 WrongPassword라는 변수에 저장함. Type Secure Text 액티비티로 이동하고 값을 new System.Net.networkCredentials(&quot;&quot;, WrongPassword).SecurePassword로 편집함   &#xA;3. 자격 증명 중 하나가 비어 있는 경우. &#xA;* 비어 있는 사용자 이름의 경우 이메일에 대한 Type Into 액티비티를 주석 처리함 &#xA;* 빈 암호의 경우, 암호에 대한 Type Secure Text 액티비티를 주석 처리함 &#xA;&#xA;워크플로를 실행하기 전에 매번 ACME 웹사이트에서 로그아웃해야 함  &#xA;" DisplayName="ACME 로그인_동기화 반영_Main Sequence" sap:VirtualizedContainerService.HintSize="1430,1855.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Username" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Open Edge Browser" sap:VirtualizedContainerService.HintSize="1368,1054.66666666667" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="https://acme-test.uipath.com/login">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do Actions Within the Browser Window" sap:VirtualizedContainerService.HintSize="546,950.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear 'Login'" sap:VirtualizedContainerService.HintSize="484,840" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
+              <ui:OnUiElementAppear.Body>
+                <Sequence DisplayName="Do Action on Login Appear" sap:VirtualizedContainerService.HintSize="450,662.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p:GetSecureCredential CredentialType="Generic" DisplayName="Get Secure Credentials Using Windows Credentials" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="GetSecureCredential_2" Password="[Password]" PersistanceType="Enterprise" Target="ACMECredential" Username="[Username]" />
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Email Field" sap:VirtualizedContainerService.HintSize="388,135.333333333333" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[Username]">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9b2ef29d-ceef-44d1-aec8-d306db17d715" InformativeScreenshot="417e369762b7c4ffb3912c9251cfc37c" Selector="&lt;webctrl tag='INPUT' type='email' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                  <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Secure Text into Password Field" sap:VirtualizedContainerService.HintSize="388,107.333333333333" sap2010:WorkflowViewState.IdRef="TypeSecureText_4" SecureText="[Password]">
+                    <ui:TypeSecureText.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0a932541-3fde-474b-b312-3c62b92a7602" InformativeScreenshot="8ce7fa4c3fb5c184fc45f26e3101d175" Selector="&lt;webctrl tag='INPUT' type='password' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:TypeSecureText.Target>
+                  </ui:TypeSecureText>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Login' Button" sap:VirtualizedContainerService.HintSize="388,107.333333333333" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="67dfb91e-342b-4568-8939-2b1431cacc46" InformativeScreenshot="3484b5158eebcd7715ee6560b30baa1a" Selector="&lt;webctrl tag='BUTTON' type='submit' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </ui:OnUiElementAppear.Body>
+              <ui:OnUiElementAppear.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d3a0e0f7-f3e7-463f-8259-c01d0718ec42" InformativeScreenshot="44bb17b0aa63154acac990af1e466583" Selector="&lt;webctrl tag='H1' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:OnUiElementAppear.Target>
+            </ui:OnUiElementAppear>
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:OpenBrowser>
+    <Pick DisplayName="Pick -Cases" sap:VirtualizedContainerService.HintSize="1368,454.666666666667" sap2010:WorkflowViewState.IdRef="Pick_1">
+      <PickBranch DisplayName="PickBranch1 on Correct Login" sap:VirtualizedContainerService.HintSize="384.666666666667,407.333333333333" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+        <PickBranch.Trigger>
+          <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists - Welcome" sap:VirtualizedContainerService.HintSize="334,107.333333333333" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f2fa377a-3b75-483c-8d8f-5e2a534cf947" InformativeScreenshot="baa82a06a688ca2812c76176bb333af8" Selector="&lt;html app='msedge.exe' title='ACME System 1 - Dashboard' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;h1' tag='H1' /&gt;" TimeoutMS="5000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+        </PickBranch.Trigger>
+        <ui:LogMessage DisplayName="Log Message - Login Successful" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ACME에 성공적으로 로그인했습니다.&quot;]" />
+      </PickBranch>
+      <PickBranch DisplayName="PickBranch2 on Wrong Username or Password" sap:VirtualizedContainerService.HintSize="384.666666666667,407.333333333333" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+        <PickBranch.Trigger>
+          <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists - Credentials do not Match" sap:VirtualizedContainerService.HintSize="334,107.333333333333" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7cd9110c-a430-4cce-b034-864d78733c2b" InformativeScreenshot="c95afe273a3e122d5bd7e039276e10d0" Selector="&lt;html app='msedge.exe' title='ACME System 1 - Log In' /&gt;&lt;webctrl tag='STRONG' /&gt;" TimeoutMS="5000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+        </PickBranch.Trigger>
+        <ui:LogMessage DisplayName="Log Message - Wrong Credentials" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;잘못된 사용자 이름 또는 비밀번호가 입력되었습니다.&quot;]" />
+      </PickBranch>
+      <PickBranch DisplayName="PickBranch3 on Empty Username or Password" sap:VirtualizedContainerService.HintSize="384.666666666667,407.333333333333" sap2010:WorkflowViewState.IdRef="PickBranch_3">
+        <PickBranch.Trigger>
+          <ui:ImageFound Found="{x:Null}" DisplayName="Image Exists - Empty Field" sap:VirtualizedContainerService.HintSize="334,107.333333333333" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.5" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAASIAAAAwCAYAAAC113eSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAopSURBVHhe7ZtrqE5ZGMdNzcyHmdGUKWUm+TKSJCMjImESikjR5AO5myT3iEhIrkkpB+MDneMcH4aYxBCDcplCESHGpdzvl+QSzjPvf539HMt+11577Yt3v7PP86unfd611157r8vzX89ea59GJAiCkDEiRIIgZI4IkSAImSNCJAhC5ogQCYKQOSJEgiBkTrgQ/fMbUc03RJWFrKU23Bf3FwQh1xS83QJEwCQQpTYRI0HINQUvt5BVJOQ3PIcgCLml4OUWTKKQlQmCkFvsHm4ShKxMEITcYvdwkyBkZYIg5Ba7h5sEwcWqviDa+l2xId2U38UEQcgtdg83CYKL/fUL0cmZxYZ0U34XEwQht9g93CQILnboV68AH0g35XcxQRByi93DTYLgYiJEgiBEwO7hJkFwsf+5EL18+ZLGjx+vDH/Hoba2ls6fP09Tp06lFi1aUKNGjahVq1a0aNEiunXrlpfrA0eOHFF5cEyLtMu8ePEitWvXzrm8hw8f0vr162nAgAH1bQDD30jDuXv37nm5SwP37cKFC72UdEBd+/Tp41xuVVWVyo/rTEQtz4a/31Cm7d5ZYPdwkyC4WBkKEQZgRUUFderUSTkDjmvXrqUXL154OT6QVIggQjU1NUp4Kisr6+/x+PFjWrFiBbVv356OHTum0pgw0eDzQWYaWLYyuY7+cnTD4MUgZlyFCPXfs2cPtWnThmbMmEFnz579qB3xN9JwrmXLlrRt2zZ1TVT4eUzPrpteD653FAcPEw0QVTjSFiL0ib+/GH+/iRBlJEQQggkTJtDQoUPpypUratDfvn2bxo4dS8OGDaP79+97OevgwRpXiNDxHTp0oC1bthQ52Nu3b1VUhIhAjwZsohFG0MBKUiYcxT+w/QM6iOvXr1OXLl1ow4YNVoHBOeTBpHD16lUvNRloC1u/iRC5C9H79+/VhDl79mzq3LlzvbA3adKE+vfvn2pEa/dwkyC4WJkJ0caNG6lnz5508+ZNL6WOO3fuUL9+/Wj58uX07t07LzW5EG3evJl69OhhfAUDZ86codatW9Px48e9lHSE6MaNG+qZecCwxSkziRBFqUuUvGG8evVKTThpCxH6M8xxbcKBNL0/bMZtnrUQYXIeNWoUdezYUU2o+A1hAm/evKHLly/TrFmzqHnz5rRp0yY1wSbB7uEmQXCxMhIivA4NGjSI1q1b56V8DBwOszdmcSapEIV1NA8M3JtJ4pBB90tSZhIh4ogIbc6D1wTOIU9aEdGDBw+ob9++yvC3iahChKht/vz56hUSEwiD9tEFhM213DCyFCK00cSJE2ngwIF09+5dL7UYtM2BAwdU2+zYscNLjYfdw02C4GJlJEQnT55UazU4mrhw4QK1bduW9u3b56UkFyIM0rQjIj4fZFGFiOvoL0e3uEKEAbp9+/ZPvkbkZ//+/dS0aVNq1qyZ+tsE19vVwfEK37t3b1UuXqmDZv6owhFGlkKE8Yl+0X0iiNevX9OkSZNi+wpj93CTILhYGQnRzp07iyIeHe5wPTrhwRq3cbnjsVDtdzBeIxoyZIiK1hibaICw8yZs18SpI9eLhSrsedC2pdo1Q1uiTRcvXkwrV66k4cOH07Nnz7yzH+B663UIcnb0HfoQZUHYIKy7du0yiqaLcOC606dP08iRI9U6C+7dvXt346ZJVCHiCM3UH1GFCPmCRM1EWHku2D3cJAguVkZChA6yNZKpw5MKEQYcZnkWozR3zYLOA5OTBV0Tp47+AV0uQNyXLl1a/yoBw99I80cwXG8XB8fnF1hbRISg9+nu3buLxChMOJAfay0QM5SD50DatWvXaNy4cUWvQWHl6aAcvD6ir7du3arScF3QOMA5m0/kJyI6MJDoSuGd0W9IN+V3sZhkIUQMHFf/jggCtGTJkqJdOhAmNGHnTdiuiVPHchQiOMKyZcvUrg6Eg8HfSMNGhS5GXO8wB8erY9euXdVnGCw6OB48eFCJCRZq8drGhAnHiRMn1HVYU/GDyA1R15w5c+qfNYoQ8doY+ho7XPrGC4gaEaGN8rFGVNWYqOKHYkO6Kb+LxQSqXupXszjYRAOEnTdhuyZOHW1CxOdwvySGMlCWC4gm4MC4xh9hAqThHNaiWPy53kEODmFD5IJ1Q12EdHBffPqhR0ZhwrFq1Sr1qcjz58+9lI/xLyFweXrbBPXV3r171WQ3evRo48J/VCEC/l0z5OW68q7ZggUL1HrcmjVriiLPqNg93CQILrapYBsNhnRTfheLCcJMdELQYjWHoYcPH/ZSshGiMFhUYI0bN6Zu3bqpRVQYFuOR3qtXr4+iLRch4jJthi1xbI3bhCgL0KdjxowJnGQAvhtDHkQ4IEyIUBYc+ujRo0YRCiJMiJBuG09oU7Qti3BYeQxHUyNGjFBjGUKEKFAnjhABvg6vpxhvGHcYD1jfwvUQqbR8xO7hJkFwteqvqfaPH4n+/JkIx8JvYz5Xiwlv32NB0DSw0Gn+HS4erEkbOWzQ69hEIy5pl1luQhSHKH2SJnEjorDnRNSGiRR9gvG9evXqom/mkgqR/ragg3LKW4i2fEX093CiJxfqysERv5Fuyu9iCUBD4n0fIbUOf9CIztNFKi9ClDauQsT5UB8XQ15cU67gtQN1xqKs/oUxDL+RjrUjvNYF4bJGNH369PoyXIQI62CIgPRFeV6o1z81aLhCVPk90dN/vUI88BvpxvwOlgDsWk2ePFlFRpcuXVKiA1HCv3zgtcO/dVrOQoSydEdwMZcyXerqKkRRQFlJhYid1lT3IHPpE4BXXUQyKB9rQoiwedLCEb+RjvP4fCBocRd509w1O3funJpcTeP30KFDKkrC/XCPhitE1R28Anwg3ZTfxRKCmaa6ulrNIBiIOH6qf3pluBy/E9gsbSd3KTPNARWVNIQoCtwnLkKE3ad58+apqBnRs41Hjx7R4MGDaebMmWox1wREIa3viE6dOkXTpk0z7sDiPhDHuXPn0pMnTxqwEFV8WwhDfDMDfiPdlN/FSggP1qSNHGXQu4pGFFzLTHNAAR7AuLeLlasQRckLkM/FwV0IE6IoNFwh+v1zop3DCmHI07pycMRvpJvyu1gJ4QGYtJGjDOQ8ClGadUmLKH2SdkQUhVILEbeLPkHENRYulDllyhS1GWTb2QR2DzcJgqut/4xql39JtOGnumPhtzGfq5UQ7pSkzhll0LuKRhRcyxQhCobXiOBMSdaIolIOEVFS0NbZC1HaVkJ4sKYlRPpsEWZZCZH/OWwW1i488E3XBlkaDucC90mU+7nsmuF80o/6dPIgRFGwe7hJELKyEpKWEGWNqxA1JOIIURakKUR+RIiSmCAIucXu4SZByMoEQcgtdg+v+cYsCqU2PIcgCLml4OUW/vnNLAylNjyHIAi5peDlIUAEsoqMcF8RIUHIPQVvFwRByBYRIkEQMkeESBCEzBEhEgQhc0SIBEHIHBEiQRAyR4RIEISMIfoPAvAxHBHQLaQAAAAASUVORK5CYII=" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="59565381-4b9f-4434-8d71-02129aaa20da" Selector="&lt;html app='msedge.exe' title='ACME System 1 - Log In' /&gt;" TimeoutMS="5000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+          </ui:ImageFound>
+        </PickBranch.Trigger>
+        <ui:LogMessage DisplayName="Log Message - Incomplete Username or Password" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;사용자 이름 또는 비밀번호가 입력되지 않았습니다.&quot;]" />
+      </PickBranch>
+    </Pick>
+  </Sequence>
+</Activity>
